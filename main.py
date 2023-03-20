@@ -10,7 +10,7 @@ subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'requests'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'wget'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'certifi'])
 
-time.sleep(3)
+time.sleep(5)
 
 import requests
 import wget
