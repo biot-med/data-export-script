@@ -21,15 +21,18 @@ This script can be used in order to export data from the BioT environment and do
 - [-d | --dataType] **Mandatory: true** The data type for which the export will be performed. While exporting data using this script, only one data type can be exported each time.
   Valid input: {device, device-alert, usage-session, command, organization, patient, organization-user, caregiver, patient-alert, generic-entity, measurements}.
 - [-t | --templateNames] **Mandatory: false** When exporting a template base data, it is possible to filter the exported entities to a specific template based entities. 
-  To do so pass this argument followed by a list of the template names of which you want to filter the result.
+  To do so pass this argument followed by a list of the template names of which you want to filter the result
+  Note: this argument is not relevant for measurement data type.
 - [--creationTimeFrom] **Mandatory: false** Limits the data export to only data created after this date. Example: 2023-03-16T10:11:46.612Z. 
-  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] must be provided.
+  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] or from both.
 - [--creationTimeTo] **Mandatory: false** Limits the data export to only data created before this date. Example: 2023-03-16T10:11:46.612Z. 
-  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] must be provided.
+  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] or from both.
 - [--lastModifiedFrom] **Mandatory: false** Limits the data export to only data modified after this date. Example: 2023-03-16T10:11:46.612Z. 
-  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] must be provided.
-- [--lastModifiedFrom] **Mandatory: false** Limits the data export to only data modified before this date. Example: 2023-03-16T10:11:46.612Z. 
-  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] must be provided.
+  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] or from both.
+  Note: this argument is not relevant for measurement data type.
+- [--lastModifiedTo] **Mandatory: false** Limits the data export to only data modified before this date. Example: 2023-03-16T10:11:46.612Z. 
+  Note: A valid time range constructed either from [--creationTimeFrom and --creationTimeTo] or from [--lastModifiedFrom and lastModifiedTo] or from both.
+  Note: this argument is not relevant for measurement data type.
 - [-u | --username] **Mandatory: true** The username of the user that performs the export. Needed in order to login to the system. 
   Note: this user must have permissions to access the exported data
 - [-p | --password] **Mandatory: true** The Password of the user that performs the export. Needed in order to login to the system.
@@ -40,5 +43,7 @@ This script can be used in order to export data from the BioT environment and do
 
 - For help and more information run: 'python3 main.py --help' or 'python3 main.py -h' 
 
-## Run Example
+## Run Examples
 python3 main.py -d device -u my-name@biot-med.com -p 123456789 -b https://api.dev.biot-med.com --creationTimeFrom 2000-02-07T08:00:18.860Z --creationTimeTo 2023-02-07T08:00:18.860Z -t template1 template2 -o ./my/path 
+
+python3 main.py -d organization -u my-name@biot-med.com -p 123456789 -b https://api.dev.biot-med.com --creationTimeFrom 2000-02-07T08:00:18.860Z --creationTimeTo 2023-02-07T08:00:18.860Z  --lastModifiedFrom 2000-02-07T08:00:18.860Z --lastModifiedTo 2023-02-07T08:00:18.860Z 

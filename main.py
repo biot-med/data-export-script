@@ -32,7 +32,7 @@ def userLogin(userName: str, pw: str):
 
 def tokenRefresher():
     while True:
-        time.sleep(300)
+        time.sleep(120)
         print('refreshing token')
 
         refreshTokenLoginBody = {
